@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>RANSOMWARE - aliz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Courier New', Courier, monospace;
+      background: url('https://i.imgur.com/fYF9ZJX.gif') center center / cover no-repeat;
+      color: #ff0000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: black;
+      overflow: hidden; /* biar gak bisa scroll */
+    }
+
+    #container {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 30px;
+      border: 3px solid red;
+      box-shadow: 0 0 20px red;
+      border-radius: 10px;
+      max-width: 90%;
+      z-index: 999;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #ff0000;
+      margin-bottom: 20px;
+      text-shadow: 0 0 5px red;
+    }
+
+    #message {
+      white-space: pre-wrap;
+      font-size: 1em;
+      margin-bottom: 20px;
+      color: #ff5555;
+    }
+
+    #unlockBtn {
+      display: none;
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    #warning {
+      margin-top: 20px;
+      color: yellow;
+      font-weight: bold;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
+
+    /* Fullscreen escape message */
+    #escape {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      color: #fff;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      font-family: Arial, sans-serif;
+    }
+
+    #escape h1 {
+      color: #ff4d4d;
+      font-size: 3em;
+    }
+
+    #escape button {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      background: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="container">
+    <h1>💀ALIZZ RANSOMWARE💀</h1>
+    <div id="message"></div>
+    <button id="unlockBtn" onclick="unlock()">🔓 UNLOCK DEVICE</button>
+    <div id="warning">⚠️ DO NOT RESTART OR YOU WILL LOSE EVERYTHING ⚠️</div>
+  </div>
+
+  <!-- Escape Screen (Hidden by default) -->
+  <div id="escape">
+    <h1>👻 PRENK BRE!</h1>
+    <p style="font-size: 1.5em;">Aman aja 😅 Ini cuma bercanda!</p>
+    <button onclick="window.location.href='https://youtu.be/dQw4w9WgXcQ'">KLIK UNTUK KELUAR → RICKROLL MODE</button>
+    <p style="margin-top: 20px; font-size: 0.8em; color: #aaa;">Dibuat dengan cinta (dan jail) oleh alizz 🤪</p>
+  </div>
+
+  <script>
+    // ========== TEKS ASLI TIDAK DIUBAH ==========
+    const messageText = `
+📁 Semua data pribadi Anda telah dienkripsi oleh alizz 😈
+
+💸 Untuk mendapatkan kunci dekripsi, lakukan TF sebesar:
+     👉 Rp 50.000 ke DANA:6285943502869
+
+🧨 Batas waktu: 10 menit
+🗝️ Setelah melakukan pembayaran, klik tombol UNLOCK di bawah.
+
+🔐 Enkripsi: LIZZ LOCK-256 🔐
+
+📞 Jangan coba kabur, kami memantau perangkat Anda...
+    `;
+
+    const messageEl = document.getElementById('message');
+    const unlockBtn = document.getElementById('unlockBtn');
+    let index = 0;
+
+    function typeWriter() {
+      if (index < messageText.length) {
+        messageEl.innerHTML += messageText.charAt(index);
+        index++;
+        setTimeout(typeWriter, 40);
+      } else {
+        unlockBtn.style.display = 'inline-block';
+      }
+    }
+
+    typeWriter();
+
+    function unlock() {
+      alert("🤣 PRANK DARI alizz! Semua aman, santuy bro.");
+      window.location.href = "https://youtu.be/dQw4w9WgXcQ";
+    }
+
+    // ========== TAMBAHAN SEREM & JAIL ==========
+    
+    // 🔊 Play suara serem otomatis
+    const scarySound = new Audio('https://www.soundjay.com/horror/sounds/ghost-whisper-1.mp3');
+    scarySound.loop = true;
+    scarySound.volume = 0.2;
+
+    const heartbeat = new Audio('https://www.soundjay.com/misc/sounds/heartbeat-01.mp3');
+    heartbeat.loop = true;
+    heartbeat.volume = 0.1;
+
+    // Coba play otomatis — kalo gagal (karena browser block), biarin aja
+    window.addEventListener('click', () => {
+      scarySound.play().catch(e => console.log("User interaction needed for audio"));
+      heartbeat.play().catch(e => console.log("User interaction needed for audio"));
+    }, { once: true });
+
+    // 💥 Background kelap-kelip merah & hitam
+    setInterval(() => {
+      document.body.style.backgroundColor = document.body.style.backgroundColor === 'black' ? 'red' : 'black';
+    }, 300);
+
+    // ❌ Disable klik kanan
+    document.addEventListener('contextmenu', e => {
+      e.preventDefault();
+      alert("Klik kanan? Gak bisa lari dari sini! 😈");
+    });
+
+    // ❌ Disable shortcut keyboard
+    document.addEventListener('keydown', e => {
+      // F12, Ctrl+Shift+I/J, Ctrl+U
+      if (e.key === "F12" || 
+          (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+          (e.ctrlKey && e.key === 'u')) {
+        e.preventDefault();
+        alert("Dev Tools? Nggak hari ini! 😏");
+      }
+      // F5, Ctrl+R
+      if (e.key === "F5" || (e.ctrlKey && (e.key === 'r' || e.key === 'R'))) {
+        e.preventDefault();
+        alert("Refresh? Data kamu bakal ilang! 😱");
+      }
+      // Alt+F4, Ctrl+W
+      if ((e.altKey && e.key === 'F4') || (e.ctrlKey && e.key === 'w')) {
+        e.preventDefault();
+        alert("Tutup? Belum bayar tebusan! 💀");
+      }
+    });
+
+    // 🚫 Trap tombol back
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+      history.go(1);
+      alert("Back? Gak bisa kabur! 😈");
+    };
+
+    // 👁️ Deteksi Dev Tools — kalo kebuka, tampilkan halaman "AMAN"
+    let devtoolsOpen = false;
+    const threshold = 160;
+
+    setInterval(() => {
+      if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+        if (!devtoolsOpen) {
+          devtoolsOpen = true;
+          document.body.style.display = 'none';
+          document.getElementById('escape').style.display = 'flex';
+          scarySound.pause();
+          heartbeat.pause();
+        }
+      }
+    }, 1000);
+
+    // 💣 Trap mouse biar gak bisa klik tombol X browser (optional, agak jail)
+    document.addEventListener('mouseleave', function(e) {
+      if (e.clientY < 10) {
+        alert("Mau kabur lewat tombol X? Nggak semudah itu! 😏");
+        window.moveTo(0, 0);
+        window.resizeTo(screen.width, screen.height);
+      }
+    });
+  </script>
+
+</body>
+</html>
